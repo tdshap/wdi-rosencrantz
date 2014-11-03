@@ -1,0 +1,21 @@
+<h1>Sign Up</h1>
+<% if @error %>
+	<p style='color: red;'>Error with email/password. Please try to Signup again</p>
+<% end %>
+
+
+<%= form_tag("/users", method: "post") do %>
+	<%= label_tag(:name, "Name: ") %>
+	<%= text_field_tag(:name) %>
+
+	<%= label_tag(:email, "Email: ") %>
+	<%= text_field_tag(:email) %>
+	
+	<%= label_tag(:password, "Password: ") %>
+	<%= text_field_tag(:password) %>
+	
+	<%= label_tag(:password, "Confirm password: ") %>
+	<%= text_field_tag(:password_confirm) %>	
+	
+	<%= submit_tag("Sign Up") %>
+<% end %>

@@ -1,0 +1,70 @@
+namespace :driving do
+	desc "opens the car door"
+	task :open_door do 
+		puts "Car door has been opened"
+	end 
+# call command: rake driving:open_door
+# if namespace wern't there, would call: rake open_door
+	desc "put on seatbelt"
+	task :seatbelt do 
+		puts "Put on seatbelt!"
+	end 
+
+	desc "enter destination to GPS"
+	task :destination do 
+		puts "Entering #{ENV["PLACE"]} into GPS"
+	end 
+# in command line enter "rake driving:destination PLACE=brooklyn
+# all parameters entered through command line are take as a string
+
+	desc "Driver name to file"
+	task :driver_name_to_file do
+		sh "touch #{ENV["NAME"]}.md"
+		sh "echo 'Hello #{ENV["NAME"]}'> #{ENV["NAME"]}.md"
+	end 
+
+end 
+
+
+desc "create driver file"
+task :driver do
+	sh "touch driver.md"
+end 
+
+# this will create a new folder. "sh" means interpret this as a shell command 
+
+
+
+
+namespace :Sinatra do 
+
+	desc "create files for basic sinatra server 'FILE_NAME=name'"
+	task :create_files
+
+	sh "mkdir #{ENV['FILE_NAME']}"
+	sh "touch #{ENV['FILE_NAME']}/server.rb"
+	sh "echo 'require 'sinatra'' > server.rb"
+	sh "mkdir .#{ENV['FILE_NAME']}/libs"
+	sh "touch .#{ENV['FILE_NAME']}/libs/connection.rb"
+	# sh "echo 'require 'active_record'
+
+	# 	ActiveRecord::Base.establish_connection({
+	# 		:adapter => 'postgresql'
+	# 		:host => 'localhost'
+	# 		:username => 'Sue' 
+	# 		:database => #{ENV'FILE_NAME'}
+	# 		})
+
+	# 	ActiveRecord::Base.logger = Logger.new(STDOUT)' > connection.rb"
+
+	sh "touch methods.rb"
+	sh "cd ../"
+	sh "mkdir public"
+	sh "cd ./public"
+	sh "touch stylesheet.css"
+	sh "cs ../"
+
+
+end
+
+
